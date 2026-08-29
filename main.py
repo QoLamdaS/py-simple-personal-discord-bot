@@ -16,4 +16,4 @@ async def on_ready():
 
 
 # 4. Run the bot
-# client.run('YOUR_BOT_TOKEN')
+client.run(my_bot_token)
