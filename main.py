@@ -1,4 +1,8 @@
 import discord
+import dotenv, os
+
+dotenv.load_dotenv()  # Load environment variables from .env file
+my_bot_token = os.getenv("MY_BOT_TOKEN")
 
 # 1. Set up standard default intents
 intents = discord.Intents.default()
