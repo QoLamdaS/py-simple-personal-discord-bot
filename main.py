@@ -11,8 +11,7 @@ client = discord.Client(intents=intents)
 # (Hint: Use a decorator @client.event and an async function named on_ready)
 @client.event
 async def on_ready():
-    # What would you print here to confirm which bot logged in?
-    pass
+    print(f'Successfully logged in as {client.user}')
 
 
 # 4. Run the bot
