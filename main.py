@@ -8,16 +8,16 @@ my_bot_token = os.getenv("MY_BOT_TOKEN")
 # 1. Set up standard default intents
 intents = discord.Intents.default()
 
-# 2. Create the client instance
-client = discord.Client(intents=intents)
+# 2. Initialize the bot instance with a prefix and intents
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 # 3. Define the event for when the bot is ready
-# (Hint: Use a decorator @client.event and an async function named on_ready)
-@client.event
+# (Hint: Use a decorator @bot.event and an async function named on_ready)
+@bot.event
 async def on_ready():
-    print(f'Successfully logged in as {client.user}')
+    print(f'Successfully logged in as {bot.user}')
 
 
 # 4. Run the bot
-client.run(my_bot_token)
+bot.run(my_bot_token)
