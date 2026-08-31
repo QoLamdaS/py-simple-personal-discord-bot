@@ -7,6 +7,7 @@ my_bot_token = os.getenv("MY_BOT_TOKEN")
 
 # 1. Set up standard default intents
 intents = discord.Intents.default()
+intents.message_content = True  # Allows the bot to read message content
 
 # 2. Initialize the bot instance with a prefix and intents
 bot = commands.Bot(command_prefix='!', intents=intents)
