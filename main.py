@@ -7,6 +7,7 @@ my_bot_token = os.getenv("MY_BOT_TOKEN")
 
 # 1. Set up standard default intents
 intents = discord.Intents.default()
+intents.guilds = True
 intents.message_content = True  # Allows the bot to read message content
 
 # 2. Initialize the bot instance with a prefix and intents
@@ -18,6 +19,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'Successfully logged in as {bot.user}')
+    print(f'Connected servers: {[guild.name for guild in bot.guilds]}')
 
 @bot.command()
 async def ping(ctx):
