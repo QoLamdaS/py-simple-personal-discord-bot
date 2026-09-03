@@ -19,6 +19,9 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'Successfully logged in as {bot.user}')
 
+@bot.command()
+async def ping(ctx):
+    await ctx.send("Pong! 🏓")
 
 # 4. Run the bot
 bot.run(my_bot_token)
