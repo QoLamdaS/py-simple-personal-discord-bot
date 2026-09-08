@@ -3,8 +3,13 @@ from discord.ext import commands
 import dotenv, os
 
 def initialize_secrets():
-    dotenv.load_dotenv()  # Load environment variables from .env file
-    os.getenv("MY_BOT_TOKEN")
+    # 1. Handle missing .env file
+    try:
+        # raise_error_if_not_found=True forces an error if the file doesn't exist
+        dotenv.load_dotenv(raise_error_if_not_found=True) 
+    except FileNotFoundError:
+        print("Error: .env file not found")
+        return None
 
 # 1. Set up standard default intents
 intents = discord.Intents.default()
