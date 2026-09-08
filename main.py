@@ -1,13 +1,13 @@
 import discord
 from discord.ext import commands
-import dotenv, os
+import dotenv, os, sys
 
 def initialize_secrets():
     # 1. Handle missing .env file
     try:
         # raise_error_if_not_found=True forces an error if the file doesn't exist
-        dotenv.load_dotenv(raise_error_if_not_found=True) 
-    except FileNotFoundError:
+        dotenv.load_dotenv(dotenv.find_dotenv(raise_error_if_not_found=True)) 
+    except OSError:
         print("Error: .env file not found")
         sys.exit(1)
     # 2. Handle empty values or any ValueError
