@@ -14,7 +14,8 @@ def initialize_secrets():
     try:
         my_bot_token = os.getenv("MY_BOT_TOKEN")
         if my_bot_token is None or my_bot_token.strip() == "":
-            raise ValueError("MY_BOT_TOKEN is empty in the .env file")
+            print("MY_BOT_TOKEN is empty in the .env file")
+            sys.exit(1)
     except ValueError as e:
         print(f"Error: {e}")
         sys.exit(1)
