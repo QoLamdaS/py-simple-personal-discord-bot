@@ -2,8 +2,23 @@ import discord
 from discord.ext import commands
 import dotenv, os, sys
 
-dotenv.load_dotenv()  # Load environment variables from .env file
-my_bot_token = os.getenv("MY_BOT_TOKEN")
+def initialize_secrets():
+    # 1. First, check if the variable is already loaded in environment (Docker / System)
+    my_bot_token = os.getenv("MY_BOT_TOKEN")
+    # 2. If not found, fall back to loading from .env file
+    if not my_bot_token:
+        try:
+            dotenv.load_dotenv(dotenv.find_dotenv(raise_error_if_not_found=True))
+            my_bot_token = os.getenv("MY_BOT_TOKEN")
+        except OSError:
+            print("Error: .env file not found and MY_BOT_TOKEN not set in environment.")
+            sys.exit(1)
+    if not my_bot_token or my_bot_token.strip() == "":
+        print("Error: MY_BOT_TOKEN is empty.")
+        sys.exit(1)
+    return my_bot_token
+
+my_bot_token = initialize_secrets()
 
 # 1. Set up standard default intents
 intents = discord.Intents.default()
